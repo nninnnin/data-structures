@@ -61,7 +61,7 @@ Set는 특별한 순서 없이 unique한 value가 들어 있습니다.
   - [ ] string value를 받아 `set`에 있는지 없는지 boolean value를 return하여 알려주는 `.contains()` method.
   - [ ] string value를 받아 `set`에 그 value가 존재할시 없에 주는 `.remove()` method.
   - [ ] 위 function들의 time complexity는 무엇인가요?
-  * **Note:** `set`은 필요 이상의 공간을 사용하지 말아야합니다. 막약 value가 set에 있다면, 똑같은 value를 다시 set에 넣는 것으로 `set`의 size가 커지지 않아야 합니다.
+  * **Note:** `set`은 필요 이상의 공간을 사용하지 말아야합니다. 막약 value가 set에 있다면, 똑같은 value를 다시 set에 넣는 것으로 `set`의 size가 커지지 않아야 합니다. ES2015에는 [`Set`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set)이 기본으로 주어집니다.
 
 ### 5. [Hash Table](https://en.wikipedia.org/wiki/Hash_table)
 
