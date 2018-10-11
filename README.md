@@ -30,7 +30,53 @@
   - [ ] argument로 받은 value가 특정 node와 그 자손(descendant) node에 있는지 boolean으로 알려주는 `.contains()` method.
   - [ ] 위 function들의 time complexity는 무엇인가요?
 
-### 3. [Graph](https://en.wikipedia.org/wiki/Graph_(abstract_data_type))
+### 3. [Set](https://en.wikipedia.org/wiki/Set_(abstract_data_type))
+
+Set는 특별한 순서 없이 unique한 value가 들어 있습니다.
+
+* 아래 프로퍼티들을 가지고 있는 `set` class를 구현하세요:
+  - [ ] string value를 받아 `set`에 넣어주는 `.add()` method.
+  - [ ] string value를 받아 `set`에 있는지 없는지 boolean value를 return하여 알려주는 `.contains()` method.
+  - [ ] string value를 받아 `set`에 그 value가 존재할시 없에 주는 `.remove()` method.
+  - [ ] 위 function들의 time complexity는 무엇인가요?
+  * **Note:** `set`은 필요 이상의 공간을 사용하지 말아야합니다. 막약 value가 set에 있다면, 똑같은 value를 다시 set에 넣는 것으로 `set`의 size가 커지지 않아야 합니다. ES2015에는 [`Set`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set)이 기본으로 주어집니다.
+
+### 4. [Hash Table](https://en.wikipedia.org/wiki/Hash_table)
+
+과제를 진행하기 전에 반드시 스스로 조사하여 Linked List의 특성에 대해 공부하세요. 특성과 실생활에서의 용도에 대해 공부하세요.
+
+- [ ] `hashTable` class를 구현하세요:
+  * **시작 하기전에:** 여러분들에게 주어진 helper function이 무슨일을 하는지 파악하기 위해 여러가지 시도를 해보세요.
+  * 이미 주어진 has function을 가지고 key value를 array index value로 바꿀것입니다.
+  * `limitedArray` helper function도 이미 구현되있습니다.
+  * `limitedArray`의 source code는 `src/hashTableHelpers.js`에 있습니다.
+  * JavaScript의 array를 사용하지말고 `limitedArray`를 사용하여 저장해야할 값을 넣어주세요.
+  * source code에서 보게 되겠지만 `limitedArray`는 `get`, `set`, 그리고 `each` method들이 있습니다. 이 method들을 사용하여 `limitedArray`를 이용해야 합니다.
+  * `limitedArray`를 사용할 때에는 bracket notation을 사용하지 마세요.
+- [ ] 모든 instance에 아래있는 property들을 사용할수 있게 하세요.
+  - [ ] `.insert()` method
+  - [ ] `.retrieve()` method
+  - [ ] `.remove()` method
+  - [ ] 위 메소드들의 시간 복잡도는 무엇인가요?
+
+### 5. [Binary Search Tree](https://en.wikipedia.org/wiki/Binary_search_tree)
+
+Binary tree는 각각의 노드가 최대 2개의 children을 가질수 있는 tree입니다.
+Binary tree는 children이 2개 이하인 것만 빼면 tree와 똑같습니다.
+
+Binary **search** tree는, 하나의 child가 현재 node의 value보다 작습니다. 그리고 나머지 child는 현재 node보다 큰 value를 가지고 있습니다. (binary tree는 child가 최대 2개라는것 명심하세요)
+
+왼쪽에 있는 child node가 현재 부모 node보다 값이 크던 아니면 오른쪽에 있는 child node가 값이 크던 한번 정해지면 binary search tree 전체에 일관성(consistent)있게 적용되어야 합니다. 이 consistent한 성질 덕분에 Binary search tree data structure에서 value를 찾는 operation이 굉장히 빠릅니다.
+
+* 아래 property를 가지고 있는 `binarySearchTree` class를 구현하세요:
+  - [ ] 현재 Binary Search Tree(BST) value보다 작은 value를 가지고 있는 `.left` property.
+  - [ ] 현재 BST value보다 큰 value를 가지고 있는 `.right` property.
+  - [ ] value를 argument로 받아 알맞는 장소(`.left` 또는 `.right`)에 BST를 넣어주는 `.insert()` method.
+  - [ ] value를 argument로 받아 받은 value가 tree에 존재하는지 boolean으로 알려주는 `.contains()` method.
+  - [ ] callback function을 argument로 받아 그 callback function을 tree의 모든 value별로 invoke 해주는 `.depthFirstLog()` method.
+  - [ ] 위 function들의 time complexity는 무엇인가요?
+  
+### 6. Advanced: [Graph](https://en.wikipedia.org/wiki/Graph_(abstract_data_type))
 
 Graph는 node (종종 꼭지점(vertices)이라 부름)와 edge (종종 호(arcs)라고 함)로 구성되어 노드를 연결합니다.
 tree와는 다르게 hierarchical data structure가 아닐수도 있습니다.
@@ -50,52 +96,6 @@ directed graph는 edge에 의해 연결된 node의 관계가 비대칭 관계(as
   - [ ] 2개의 node가 연결되어 있는지 boolean value로 알려주는 `.hasEdge()` method.
   - [ ] 2개의 node의 연결 고리를 없에주는 `.removeEdge()` method.
   - [ ] augument로 받은 callback function을 graph를 횡단(traverse)하여 node마다 한번씩 invoke하는 `.forEachNode()` method
-  - [ ] 위 function들의 time complexity는 무엇인가요?
-
-### 4. [Set](https://en.wikipedia.org/wiki/Set_(abstract_data_type))
-
-Set는 특별한 순서 없이 unique한 value가 들어 있습니다.
-
-* 아래 프로퍼티들을 가지고 있는 `set` class를 구현하세요:
-  - [ ] string value를 받아 `set`에 넣어주는 `.add()` method.
-  - [ ] string value를 받아 `set`에 있는지 없는지 boolean value를 return하여 알려주는 `.contains()` method.
-  - [ ] string value를 받아 `set`에 그 value가 존재할시 없에 주는 `.remove()` method.
-  - [ ] 위 function들의 time complexity는 무엇인가요?
-  * **Note:** `set`은 필요 이상의 공간을 사용하지 말아야합니다. 막약 value가 set에 있다면, 똑같은 value를 다시 set에 넣는 것으로 `set`의 size가 커지지 않아야 합니다. ES2015에는 [`Set`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set)이 기본으로 주어집니다.
-
-### 5. [Hash Table](https://en.wikipedia.org/wiki/Hash_table)
-
-과제를 진행하기 전에 반드시 스스로 조사하여 Linked List의 특성에 대해 공부하세요. 특성과 실생활에서의 용도에 대해 공부하세요.
-
-- [ ] `hashTable` class를 구현하세요:
-  * **시작 하기전에:** 여러분들에게 주어진 helper function이 무슨일을 하는지 파악하기 위해 여러가지 시도를 해보세요.
-  * 이미 주어진 has function을 가지고 key value를 array index value로 바꿀것입니다.
-  * `limitedArray` helper function도 이미 구현되있습니다.
-  * `limitedArray`의 source code는 `src/hashTableHelpers.js`에 있습니다.
-  * JavaScript의 array를 사용하지말고 `limitedArray`를 사용하여 저장해야할 값을 넣어주세요.
-  * source code에서 보게 되겠지만 `limitedArray`는 `get`, `set`, 그리고 `each` method들이 있습니다. 이 method들을 사용하여 `limitedArray`를 이용해야 합니다.
-  * `limitedArray`를 사용할 때에는 bracket notation을 사용하지 마세요.
-- [ ] 모든 instance에 아래있는 property들을 사용할수 있게 하세요.
-  - [ ] `.insert()` method
-  - [ ] `.retrieve()` method
-  - [ ] `.remove()` method
-  - [ ] 위 메소드들의 시간 복잡도는 무엇인가요?
-
-### 6. [Binary Search Tree](https://en.wikipedia.org/wiki/Binary_search_tree)
-
-Binary tree는 각각의 노드가 최대 2개의 children을 가질수 있는 tree입니다.
-Binary tree는 children이 2개 이하인 것만 빼면 tree와 똑같습니다.
-
-Binary **search** tree는, 하나의 child가 현재 node의 value보다 작습니다. 그리고 나머지 child는 현재 node보다 큰 value를 가지고 있습니다. (binary tree는 child가 최대 2개라는것 명심하세요)
-
-왼쪽에 있는 child node가 현재 부모 node보다 값이 크던 아니면 오른쪽에 있는 child node가 값이 크던 한번 정해지면 binary search tree 전체에 일관성(consistent)있게 적용되어야 합니다. 이 consistent한 성질 덕분에 Binary search tree data structure에서 value를 찾는 operation이 굉장히 빠릅니다.
-
-* 아래 property를 가지고 있는 `binarySearchTree` class를 구현하세요:
-  - [ ] 현재 Binary Search Tree(BST) value보다 작은 value를 가지고 있는 `.left` property.
-  - [ ] 현재 BST value보다 큰 value를 가지고 있는 `.right` property.
-  - [ ] value를 argument로 받아 알맞는 장소(`.left` 또는 `.right`)에 BST를 넣어주는 `.insert()` method.
-  - [ ] value를 argument로 받아 받은 value가 tree에 존재하는지 boolean으로 알려주는 `.contains()` method.
-  - [ ] callback function을 argument로 받아 그 callback function을 tree의 모든 value별로 invoke 해주는 `.depthFirstLog()` method.
   - [ ] 위 function들의 time complexity는 무엇인가요?
 
 ## Resources
