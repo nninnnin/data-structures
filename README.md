@@ -9,12 +9,13 @@
 ## Resources
 
 - [VisuAlgo](http://visualgo.net/)는 여러 종류의 자료구조와 알고리즘을 시각화하는 사이트입니다.
+- [BigOCheatSheet](http://bigocheatsheet.com/)는 여러 종류의 자료구조와 알고리즘의 시간복잡도에 대해 정리가 되어 있는 사이트입니다. 각 자료구조의 시간복잡도에 대해 반드시 이해하고 숙지하세요.
 
 ## 진행 순서
 
 ### 1. [Linked List](https://en.wikipedia.org/wiki/Linked_list)
 
-과제를 진행하기 전에 반드시 스스로 조사하여 Linked List의 특성에 대해 공부하세요. 특성과 실생활에서의 용도에 대해 공부하세요.
+과제를 진행하기 전에 반드시 스스로 조사하여 Linked List의 특성에 대해 공부하세요.(실생활에서의 Use Case 및 시간 복잡도)
 
 * 아래 프로퍼티(property)들을 가지고 있는 `linkedList` class를 구현하세요:
   - [ ] `linkedListNode` instance를 value로 가지고 있는 `.head` property.
@@ -26,7 +27,7 @@
 
 ### 2. [Tree](https://en.wikipedia.org/wiki/Tree_(data_structure))
 
-과제를 진행하기 전에 반드시 스스로 조사하여 Tree의 특성에 대해 공부하세요. 특성과 실생활에서의 용도에 대해 공부하세요.
+과제를 진행하기 전에 반드시 스스로 조사하여 Tree의 특성에 대해 공부하세요.(실생활에서의 Use Case 및 시간 복잡도)
 
 * 아래 프로퍼티들을 가지고 있는 `tree` class를 구현하세요:
   - [ ] 하위 tree를 array안에 담고 있는 `.children` property.
@@ -47,7 +48,7 @@ Set는 특별한 순서 없이 unique한 value가 들어 있습니다.
 
 ### 4. [Hash Table](https://en.wikipedia.org/wiki/Hash_table)
 
-과제를 진행하기 전에 반드시 스스로 조사하여 Hash Table의 특성에 대해 공부하세요. 특성과 실생활에서의 용도에 대해 공부하세요.
+과제를 진행하기 전에 반드시 스스로 조사하여 Hash Table의 특성에 대해 공부하세요.(실생활에서의 Use Case 및 시간 복잡도)
 
 - [ ] `hashTable` class를 구현하세요:
   * **시작 하기전에:** 여러분들에게 주어진 helper function이 무슨일을 하는지 파악하기 위해 여러가지 시도를 해보세요.
@@ -71,6 +72,8 @@ Binary tree는 children이 2개 이하인 것만 빼면 tree와 똑같습니다.
 Binary **search** tree는, 하나의 child가 현재 node의 value보다 작습니다. 그리고 나머지 child는 현재 node보다 큰 value를 가지고 있습니다. (binary tree는 child가 최대 2개라는것 명심하세요)
 
 왼쪽에 있는 child node가 현재 부모 node보다 값이 크던 아니면 오른쪽에 있는 child node가 값이 크던 한번 정해지면 binary search tree 전체에 일관성(consistent)있게 적용되어야 합니다. 이 consistent한 성질 덕분에 Binary search tree data structure에서 value를 찾는 operation이 굉장히 빠릅니다.
+
+**Tree와의 차이점에 대해서 반드시 이해하고, 시간 복잡도가 왜 차이가 나는지 조사해보세요.**
 
 * 아래 property를 가지고 있는 `binarySearchTree` class를 구현하세요:
   - [ ] 현재 Binary Search Tree(BST) value보다 작은 value를 가지고 있는 `.left` property.
