@@ -6,6 +6,10 @@
 - 기본적으로 주어진 테스트를 통과하도록 만들어 주세요.
 - 테스트가 부족해보이다면 직접 작성해 주세요.
 
+## Resources
+
+- [VisuAlgo](http://visualgo.net/)는 여러 종류의 자료구조와 알고리즘을 시각화하는 사이트입니다.
+
 ## 진행 순서
 
 ### 1. [Linked List](https://en.wikipedia.org/wiki/Linked_list)
@@ -22,7 +26,7 @@
 
 ### 2. [Tree](https://en.wikipedia.org/wiki/Tree_(data_structure))
 
-과제를 진행하기 전에 반드시 스스로 조사하여 Linked List의 특성에 대해 공부하세요. 특성과 실생활에서의 용도에 대해 공부하세요.
+과제를 진행하기 전에 반드시 스스로 조사하여 Tree의 특성에 대해 공부하세요. 특성과 실생활에서의 용도에 대해 공부하세요.
 
 * 아래 프로퍼티들을 가지고 있는 `tree` class를 구현하세요:
   - [ ] 하위 tree를 array안에 담고 있는 `.children` property.
@@ -43,7 +47,7 @@ Set는 특별한 순서 없이 unique한 value가 들어 있습니다.
 
 ### 4. [Hash Table](https://en.wikipedia.org/wiki/Hash_table)
 
-과제를 진행하기 전에 반드시 스스로 조사하여 Linked List의 특성에 대해 공부하세요. 특성과 실생활에서의 용도에 대해 공부하세요.
+과제를 진행하기 전에 반드시 스스로 조사하여 Hash Table의 특성에 대해 공부하세요. 특성과 실생활에서의 용도에 대해 공부하세요.
 
 - [ ] `hashTable` class를 구현하세요:
   * **시작 하기전에:** 여러분들에게 주어진 helper function이 무슨일을 하는지 파악하기 위해 여러가지 시도를 해보세요.
@@ -78,6 +82,8 @@ Binary **search** tree는, 하나의 child가 현재 node의 value보다 작습�
   
 ### 6. Advanced: [Graph](https://en.wikipedia.org/wiki/Graph_(abstract_data_type))
 
+**무리하게 Graph를 진행하기보다는 1-5번까지의 자료 구조에 대한 이해를 더 높이기를 추천합니다.**
+
 Graph는 node (종종 꼭지점(vertices)이라 부름)와 edge (종종 호(arcs)라고 함)로 구성되어 노드를 연결합니다.
 tree와는 다르게 hierarchical data structure가 아닐수도 있습니다.
 
@@ -97,7 +103,3 @@ directed graph는 edge에 의해 연결된 node의 관계가 비대칭 관계(as
   - [ ] 2개의 node의 연결 고리를 없에주는 `.removeEdge()` method.
   - [ ] augument로 받은 callback function을 graph를 횡단(traverse)하여 node마다 한번씩 invoke하는 `.forEachNode()` method
   - [ ] 위 function들의 time complexity는 무엇인가요?
-
-## Resources
-
-- [VisuAlgo](http://visualgo.net/)는 여러 data structure들과 algorithm들을 visualize하는 멋진 사이트 입니다. 
