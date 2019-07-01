@@ -82,7 +82,7 @@ Binary **search** tree는, 하나의 child가 현재 node의 value보다 작습�
   - [ ] value를 argument로 받아 받은 value가 tree에 존재하는지 boolean으로 알려주는 `.contains()` method.
   - [ ] callback function을 argument로 받아 그 callback function을 tree의 모든 value별로 invoke 해주는 `.depthFirstLog()` method.
   - [ ] 위 function들의 time complexity는 무엇인가요?
-  
+
 ### 6. Advanced: [Graph](https://en.wikipedia.org/wiki/Graph_(abstract_data_type))
 
 **무리하게 Graph를 진행하기보다는 1-5번까지의 자료 구조에 대한 이해를 더 높이기를 추천합니다.**
@@ -106,3 +106,7 @@ directed graph는 edge에 의해 연결된 node의 관계가 비대칭 관계(as
   - [ ] 2개의 node의 연결 고리를 없에주는 `.removeEdge()` method.
   - [ ] augument로 받은 callback function을 graph를 횡단(traverse)하여 node마다 한번씩 invoke하는 `.forEachNode()` method
   - [ ] 위 function들의 time complexity는 무엇인가요?
+
+### 7. Extra Advanced
+
+- 위 사항들을 모두 끝마치신 분들은 Singly Linked List, Red Black Tree, Doubly Linked List 등 다양한 자료 구조에 대해 추가적으로 학습해보세요.
