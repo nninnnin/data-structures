@@ -12,7 +12,7 @@ var Tree = function(value) {
   return newTree;
 };
 
-// set up as prototype of Tree
+// TODO: set up as prototype of Tree
 var treeMethods = {};
 
 treeMethods.addChild = function(value) {
