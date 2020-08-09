@@ -1,9 +1,13 @@
 /*
- * Complexity: 시간 복잡도에 대해서 생각해보세요.
+ *
+ * 본인이 구현하는 메소드의 시간 복잡도에 대해서 생각해보세요.
+ * 새로운 메소드나 속성은 추가하지 마세요.
+ *
  */
 
-var LinkedList = function() {
-  var list = {};
+const LinkedList = function() {
+  const list = {};
+
   list.head = null;
   list.tail = null;
 
@@ -19,8 +23,8 @@ var LinkedList = function() {
   return list;
 };
 
-var Node = function(value) {
-  var node = {};
+const Node = function(value) {
+  const node = {};
 
   node.value = value;
   node.next = null;

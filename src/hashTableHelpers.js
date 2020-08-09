@@ -11,10 +11,10 @@
 //   limitedArray.set(3, 'hi');
 //   limitedArray.get(3); // returns 'hi'
 
-var LimitedArray = function(limit) {
-  var storage = [];
+const LimitedArray = function(limit) {
+  const storage = [];
 
-  var limitedArray = {};
+  const limitedArray = {};
 
   limitedArray.get = function(index) {
     checkLimit(index);
@@ -27,12 +27,12 @@ var LimitedArray = function(limit) {
   };
 
   limitedArray.each = function(callback) {
-    for (var i = 0; i < storage.length; i++) {
+    for (let i = 0; i < storage.length; i++) {
       callback(storage[i], i, storage);
     }
   };
 
-  var checkLimit = function(index) {
+  const checkLimit = function(index) {
     if (typeof index !== 'number') {
       throw new Error('setter requires a numeric index for its first argument');
     }
@@ -47,9 +47,9 @@ var LimitedArray = function(limit) {
 // This is a "hashing function". You don't need to worry about it, just use it
 // to turn any string into an integer that is well-distributed between the
 // numbers 0 and `max`
-var getIndexBelowMaxForKey = function(str, max) {
-  var hash = 0;
-  for (var i = 0; i < str.length; i++) {
+const getIndexBelowMaxForKey = function(str, max) {
+  let hash = 0;
+  for (let i = 0; i < str.length; i++) {
     hash = (hash<<5) + hash + str.charCodeAt(i);
     hash = hash & hash; // Convert to 32bit integer
     hash = Math.abs(hash);
