@@ -11,13 +11,38 @@ const LinkedList = function() {
   list.head = null;
   list.tail = null;
 
+  const linkedListNode = new Node();
+  list.head = linkedListNode;
+  list.tail = linkedListNode;
+
   list.addToTail = function(value) {
+    if (list.head === list.tail && !list.head.value) {
+      list.tail.value = value;
+    } else {
+      const newNode = new Node(value);
+      list.tail.next = newNode;
+      list.tail = newNode;
+    }
   };
 
   list.removeHead = function() {
+    const headValue = list.head.value;
+    list.head = list.head.next;
+    return headValue;
   };
 
   list.contains = function(target) {
+    let currNode = list.head;
+
+    while (currNode) {
+      if (currNode.value === target) {
+        return true;
+      }
+
+      currNode = currNode.next;
+    }
+
+    return false;
   };
 
   return list;
