@@ -12,15 +12,16 @@ const HashTable = function() {
   return this;
 };
 
-HashTable.prototype.insert = function(k, v) {
+HashTable.prototype.insert = function(k, v, isCopying) {
   let index = getIndexBelowMaxForKey(k ,this._limit);
 
-  // 언제 다음 키로 probing하는가?
-  // 받아온 키를 해싱한 값과, object에 저장된 원래 key (k)가 동시에 같을 때.
-  // 동시에 같지 않다면 인덱스를 더하지 않고(probing 하지 않고) 그냥 덮어씌우게 된다
-  while (this._storage.get(index)) { // 값이 있다?
-    // 해싱된 인덱스 뿐 아니라 해싱되기 전 키값(k)도 같은지 확인한다
-    if (Object.keys(this._storage.get(index))[0] === k) {
+  let searchCount = 0;
+
+  while (this._storage.get(index)) {
+    searchCount++;
+    if (searchCount === this._limit) throw new Error('Error : There is no space in hash table!');
+
+    if (this._storage.get(index).hasOwnProperty(k)) {
       break;
     }
     index = (index + 1) % this._limit;
@@ -32,18 +33,48 @@ HashTable.prototype.insert = function(k, v) {
 
   this._storage.set(index, object);
 
+  // hashTable storage가 현재 몇개를 저장하고 있게 되었는지, stockCount를 통해 파악한다
+  // insert 후가 적절한 시점으로 판단
+  let stockCount = 0;
+  this._storage.each((stock) => {
+    if (typeof stock === "object") stockCount++;
+  });
+
+  // 너무 많은 양을 저장하고 있다면 capacity (limit)을 늘려주고 (절반 이상)
+  if (stockCount > parseInt(this._limit / 2) && !isCopying) {
+    this._limit = this._limit * 2;
+    // 새로운 limitedArray를 만들고 each를 사용해서 기존의 것에서 데이터를 가져와서 넣어준다..
+    copyStocks.call(this, this._storage);
+  } 
+  else if (stockCount <= parseInt(this._limit / 4) && !isCopying) { // 반대로 capacity에 비해 너무 적은 양을 저장하고 있다면 capacity를 줄여준다 (1/4 이하)
+    this._limit = parseInt(this._limit / 2);
+    // 여기도 마찬가지..함수를 하나 만들도록 하자
+    copyStocks.call(this, this._storage);
+  }
+
+  function copyStocks (prevStorage) {
+    this._storage = LimitedArray(this._limit); // 해당 해시테이블의 스토리지를 새로운 limit을 가진 것으로 바꾼다
+
+    prevStorage.each((elem) => {
+      if (typeof elem === "object") {
+        this.insert(Object.keys(elem)[0], Object.values(elem)[0], true);
+      }
+    });
+
+  }
+
   return true;
 };
 
 HashTable.prototype.retrieve = function(k) {
   let index = getIndexBelowMaxForKey(k, this._limit);
 
-  searchCount = 0;
+  let searchCount = 0;
 
   // 일단 해싱된 인덱스로 가져왔을 때 undefined가 아니라 무언가 저장되어 있고,
   while (this._storage.get(index)) {
     // 해싱되기 전 키값이 k와 같다면 그대로 가져오면 된다
-    if (Object.keys(this._storage.get(index))[0] === k) {
+    if (this._storage.get(index).hasOwnProperty(k)) {
       break;
     }
 
@@ -76,7 +107,7 @@ HashTable.prototype.remove = function(k) {
 
   while (this._storage.get(index)) { // 뭔가 값이 나왔다,
     // 그렇다면 해싱전의 키값과도 같은지 확인해본다 (다를 수 있다)
-    if (Object.keys(this._storage.get(index))[0] === k) {
+    if (this._storage.get(index).hasOwnProperty(k)) {
       // 만일 같다면, 삭제해야 할 대상이므로 probing을 멈춘다
       break;
     }
@@ -90,6 +121,28 @@ HashTable.prototype.remove = function(k) {
   }
 
   this._storage.set(index, undefined);
+
+  let stockCount = 0;
+  this._storage.each((stock) => {
+    if (typeof stock === "object") stockCount++;
+  });
+
+  if (stockCount <= parseInt(this._limit / 8)) { // 반대로 capacity에 비해 너무 적은 양을 저장하고 있다면 capacity를 줄여준다 (1/4 이하)
+    this._limit = parseInt(this._limit / 2);
+    // 여기도 마찬가지..함수를 하나 만들도록 하자
+    copyStocks.call(this, this._storage);
+  }
+
+  function copyStocks (prevStorage) {
+    this._storage = LimitedArray(this._limit); // 해당 해시테이블의 스토리지를 새로운 limit을 가진 것으로 바꾼다
+
+    prevStorage.each((elem) => {
+      if (typeof elem === "object") {
+        this.insert(Object.keys(elem)[0], Object.values(elem)[0], true);
+      }
+    });
+
+  }
 
   return true; // 삭제했다면 true를 반환
 };
