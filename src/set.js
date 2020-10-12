@@ -30,7 +30,6 @@ setPrototype.contains = function(item) {
   }
 };
 
-// set은 들어온 순서대로..
 setPrototype.remove = function(item) {
   const itemIndex = this._storage.indexOf(item);
   if (itemIndex !== -1) {

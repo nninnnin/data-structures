@@ -32,9 +32,7 @@ treeMethods.contains = function(target) {
   if (this.children.length > 0) {
     for (let i = 0; i < this.children.length; i++) {
       const child = this.children[i];
-
       result = child.contains(target);
-
       if (result) break;
     }
   }

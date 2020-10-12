@@ -1,7 +1,7 @@
 // ------------------------
 // Instantiate a new graph
 const Graph = function() {
-  this.nodes = {}; // nodes의 각 인덱스(키)는 노드넘버를 의미한다
+  this.nodes = {};
   return this;
 };
 
@@ -12,7 +12,7 @@ Graph.prototype.addNode = function(nodeNumber) {
     throw new Error('Error : node number should be a value type of "number"');
   }
 
-  this.nodes[nodeNumber] = []; // 빈 배열이 할당된 것은 해당 인덱스(node)가 가리키는 곳에 빈 노드가 생성되었음을 의미하고, 해당 배열의 인덱스는 이 노드와 연결된 edge의 존재를 의미한다.
+  this.nodes[nodeNumber] = [];
 
   return true;
 };
@@ -37,13 +37,12 @@ Graph.prototype.removeNode = function(node) {
 // ------------------------
 // Returns a boolean indicating whether two specified nodes are connected.  Pass in the values contained in each of the two nodes.
 Graph.prototype.hasEdge = function(fromNode, toNode) {
-  if (this.nodes.hasOwnProperty(fromNode) && this.nodes.hasOwnProperty(toNode)) { // 먼저 노드가 존재하는지 확인하고..
-    if (this.nodes[fromNode][toNode] === 1 && this.nodes[toNode][fromNode] === 1) { // 엣지가 존재하는지 (잘 가리키고 있는지)
+  if (this.nodes.hasOwnProperty(fromNode) && this.nodes.hasOwnProperty(toNode)) {
+    if (this.nodes[fromNode][toNode] === 1 && this.nodes[toNode][fromNode] === 1) {
       return true;
-    } 
-    
-    // 존재하지 않는다면..
-    return false;
+    } else {
+      return false;
+    }
   }
 
   return new Error('Some or all nodes are not defined');

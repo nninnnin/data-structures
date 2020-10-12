@@ -28,18 +28,16 @@ bstMethods.insert = function (value) {
   } 
   
   if (value > this.value) {
-    if (this.right) { // null이 아닌 경우
-      this.right.insert(value); // 재귀시행
-    } else { // null인 경우 새로 만들어서 넣음
-      const newBST = new BinarySearchTree(value);
-      this.right = newBST;
+    if (this.right) {
+      this.right.insert(value);
+    } else {
+      this.right = new BinarySearchTree(value);
     }
   } else {
     if (this.left) {
       this.left.insert(value);
     } else {
-      const newBST = new BinarySearchTree(value);
-      this.left = newBST;
+      this.left = new BinarySearchTree(value);
     }
   }
 }
@@ -67,7 +65,6 @@ bstMethods.contains = function (value) {
 }
 
 bstMethods.depthFirstLog = function (callback) {
-  // 일단 전위순회(pre-order)로 구현한다
   callback(this.value);
 
   if (this.left) {
