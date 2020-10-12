@@ -86,29 +86,43 @@ Graph.prototype.forEachNode = function(cb) {
 Graph.prototype.traverse = function () {
   let result = [];
   const searchingStack = [];
-
   const nodes = this.nodes;
+  const visitedNodes = [];
+  Object.keys(nodes).forEach((index) => {
+    visitedNodes[index] = 0;
+  })
 
-  const firstNodeIndex = Object.keys(this.nodes)[0];
+  const firstNodeIndex = Object.keys(nodes)[0];
   searchNode(parseInt(firstNodeIndex));
 
   function searchNode(currNodeIndex) {
+    if (result.length >= Object.keys(nodes).length) return;
+
+    if (visitedNodes[currNodeIndex] === 0) {
+      visitedNodes[currNodeIndex] = 1;
+      result.push(currNodeIndex);
+    }
+
     const currNode = nodes[currNodeIndex];
-
-    if (result.length < Object.keys(nodes).length) result.push(currNodeIndex);
-
+    
     result.forEach((visitedNode) => {
-      if (currNode[visitedNode]) currNode[visitedNode] = 0;
+      if (currNode[visitedNode] === 1) {
+        currNode[visitedNode] = 0;
+      }
     });
 
     let nextNodeIndex = currNode.indexOf(1); 
 
     if (nextNodeIndex !== -1) {
       currNode[nextNodeIndex] = 0;
-      if (currNode.indexOf(1) !== -1) searchingStack.push(currNode);
+      if (currNode.indexOf(1) !== -1) {
+        searchingStack.push(currNode);
+      }
       
       searchNode(nextNodeIndex);
-    } else if (searchingStack.length === 0) {
+    }
+    
+    if (searchingStack.length === 0) {
       return;
     } else {
       const stock = searchingStack.pop();
