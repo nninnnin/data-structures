@@ -78,17 +78,14 @@ Graph.prototype.removeEdge = function(fromNode, toNode) {
 // ------------------------
 // Pass in a callback which will be executed on each node of the graph.
 Graph.prototype.forEachNode = function(cb) {
-  // dfs로 구현
-
-  // 먼저 순회여부를 확인하기 위한 객체를 만들어준다
-  const searchedNodeChecker = {};
-  for (node in this.nodes) {
-    searchedNodeChecker[node] = 0;
+  for (node of Object.keys(this.nodes)) {
+    cb(node);
   }
+};
 
-  console.log(this.nodes);
-  console.log(searchedNodeChecker);
-  
+
+Graph.prototype.traverse = function () {
+  // dfs로 구현
   
   // bfs로 구현
-};
+}

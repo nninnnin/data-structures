@@ -59,4 +59,23 @@ describe('graph', function() {
     expect(graph.hasEdge(3, 5)).to.equal(true);
     expect(graph.hasEdge(5, 5)).to.equal(true);
   });
+
+  xit('test for traversing graph', function() {
+    graph.addNode(0);
+    graph.addNode(1);
+    graph.addNode(2);
+    graph.addNode(3);
+    graph.addNode(4);
+    graph.addNode(5);
+    graph.addNode(6);
+    graph.addEdge(0, 1);
+    graph.addEdge(0, 2);
+    graph.addEdge(1, 3);
+    graph.addEdge(1, 4);
+    graph.addEdge(2, 4);
+    graph.addEdge(3, 6);
+    graph.addEdge(4, 6);
+    graph.addEdge(5, 6);
+    expect(graph.traverse(0)).to.equal([0, 1, 3, 6, 4, 2, 5]);
+  });
 });
