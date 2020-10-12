@@ -9,9 +9,9 @@ const Tree = function(value) {
   const newTree = {};
   newTree.value = value;
 
-  // your code here
+  newTree.__proto__ = treeMethods;
 
-  newTree.children = null;  // TODO: Fix me
+  newTree.children = [];
 
   return newTree;
 };
@@ -20,7 +20,24 @@ const Tree = function(value) {
 const treeMethods = {};
 
 treeMethods.addChild = function(value) {
+  const newTree = new Tree(value);
+  this.children.push(newTree);
 };
 
 treeMethods.contains = function(target) {
+  if (this.value === target) return true;
+
+  let result = false;
+
+  if (this.children.length > 0) {
+    for (let i = 0; i < this.children.length; i++) {
+      const child = this.children[i];
+
+      result = child.contains(target);
+
+      if (result) break;
+    }
+  }
+
+  return result;
 };
