@@ -7,17 +7,36 @@
 
 const Set = function() {
   const set = Object.create(setPrototype);
-  set._storage = null;
+  set._storage = [];
   return set;
 };
 
 const setPrototype = {};
 
 setPrototype.add = function(item) {
-};
+  if (!this._storage.includes(item)) {
+    this._storage.push(item);
+    return this;
+  } else {
+    return false;
+  }
+}
 
 setPrototype.contains = function(item) {
+  if (this._storage.includes(item)) {
+    return true;
+  } else {
+    return false;
+  }
 };
 
+// set은 들어온 순서대로..
 setPrototype.remove = function(item) {
+  const itemIndex = this._storage.indexOf(item);
+  if (itemIndex !== -1) {
+    this._storage.splice(itemIndex, 1);
+    return true;
+  } else {
+    return false;
+  }
 };
