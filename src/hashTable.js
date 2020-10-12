@@ -38,7 +38,7 @@ HashTable.prototype.insert = function(k, v) {
     if (typeof stock === "object") stockCount++;
   });
 
-  if (stockCount > parseInt(this._limit / 2)) {
+  if (stockCount / this._limit >= 0.875) {
     this._limit = this._limit * 2;
     copyStocks.call(this, this._storage);
   }
@@ -100,7 +100,7 @@ HashTable.prototype.remove = function(k) {
     if (typeof stock === "object") stockCount++;
   });
 
-  if (stockCount <= parseInt(this._limit / 8)) {
+  if (stockCount / this._limit <= 0.125) {
     this._limit = parseInt(this._limit / 2);
     copyStocks.call(this, this._storage);
   }
