@@ -60,7 +60,7 @@ describe('graph', function() {
     expect(graph.hasEdge(5, 5)).to.equal(true);
   });
 
-  xit('test for traversing graph', function() {
+  it('test for traversing graph', function() {
     graph.addNode(0);
     graph.addNode(1);
     graph.addNode(2);
@@ -76,6 +76,6 @@ describe('graph', function() {
     graph.addEdge(3, 6);
     graph.addEdge(4, 6);
     graph.addEdge(5, 6);
-    expect(graph.traverse(0)).to.equal([0, 1, 3, 6, 4, 2, 5]);
+    expect(graph.traverse(0)).to.deep.equal([0, 1, 3, 6, 4, 2, 5]);
   });
 });

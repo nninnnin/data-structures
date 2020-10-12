@@ -84,7 +84,41 @@ Graph.prototype.forEachNode = function(cb) {
 
 
 Graph.prototype.traverse = function () {
-  // dfs로 구현
-  
-  // bfs로 구현
+  let result = [];
+  const searchingStack = [];
+
+  const nodes = this.nodes;
+
+  const firstNodeIndex = Object.keys(this.nodes)[0];
+  searchNode(parseInt(firstNodeIndex));
+
+  function searchNode(currNodeIndex) {
+    const currNode = nodes[currNodeIndex];
+
+    if (result.length < Object.keys(nodes).length) result.push(currNodeIndex);
+
+    result.forEach((visitedNode) => {
+      if (currNode[visitedNode]) currNode[visitedNode] = 0;
+    });
+
+    let nextNodeIndex = currNode.indexOf(1); 
+
+    if (nextNodeIndex !== -1) {
+      currNode[nextNodeIndex] = 0;
+      if (currNode.indexOf(1) !== -1) searchingStack.push(currNode);
+      
+      searchNode(nextNodeIndex);
+    } else if (searchingStack.length === 0) {
+      return;
+    } else {
+      const stock = searchingStack.pop();
+      const linkedNode = stock.indexOf(1);
+      
+      stock[linkedNode] = 0;
+
+      searchNode(linkedNode);
+    }
+  }
+
+  return result;
 }
